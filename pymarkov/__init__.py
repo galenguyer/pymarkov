@@ -4,7 +4,7 @@ import random
 class PyMarkov:
     nodes = {}
 
-    def __init__(self, filename:str=None):
+    def __init__(self, filename:str):
         if filename is None:
             raise Exception('filename argument cannot be None')
         if not os.path.exists(filename):
@@ -26,7 +26,7 @@ class PyMarkov:
                 self.nodes[t_line[-1]].append('<EOF>')
 
 
-    def generate(self): 
+    def generate(self):
         tokens = ''
         prev_token = random.choice(list(self.nodes.keys()))
         tokens = tokens + prev_token + ' '
@@ -37,7 +37,7 @@ class PyMarkov:
             else:
                 tokens = tokens + next_token + ' '
                 prev_token = next_token
-        return tokens            
+        return tokens
 
 
 if __name__ == '__main__':
